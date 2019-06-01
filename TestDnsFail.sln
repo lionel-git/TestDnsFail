@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDnsFail", "TestDnsFail\TestDnsFail.csproj", "{DCBBB18A-8B2F-4C35-9730-6191DB49ED98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCBBB18A-8B2F-4C35-9730-6191DB49ED98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCBBB18A-8B2F-4C35-9730-6191DB49ED98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCBBB18A-8B2F-4C35-9730-6191DB49ED98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCBBB18A-8B2F-4C35-9730-6191DB49ED98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {456DD71B-486C-4B76-8BD7-38019EA0C488}
+	EndGlobalSection
+EndGlobal
