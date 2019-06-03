@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TestDnsFail
@@ -55,6 +58,10 @@ namespace TestDnsFail
         {
             Console.WriteLine("Hello world");
 
+            var culture = new CultureInfo("en");
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+
             var connection = new TcpClient("toto", 123);
             //connection.Connect();
             Console.WriteLine("Connected");
@@ -63,12 +70,30 @@ namespace TestDnsFail
             //  throw new Exception("Error");
         }
 
+        // Cf https://stackoverflow.com/questions/34423129/how-to-get-win32exception-in-english
+        static void TestMessage()
+        {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            string msg2 = new SocketException((int)SocketError.HostNotFound).Message;
+            Console.WriteLine($"msg2= {msg2}");
+
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr-FR");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("fr-FR");
+            string msg3 = new SocketException((int)SocketError.HostNotFound).Message;
+            Console.WriteLine($"msg3= {msg3}");
+
+
+
+        }
+
         static void Main(string[] args)
         {
             try
             {
-                // TestDnsError();
-                TestPing();
+                TestMessage();
+                //TestDnsError();
+                //TestPing();
             }
             catch (SocketException e)
             {
