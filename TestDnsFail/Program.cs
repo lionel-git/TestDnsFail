@@ -91,7 +91,7 @@ namespace TestDnsFail
         static void TestNetWork()
         {
             var checkNetwork = new CheckNetWork();
-            checkNetwork.TestAddress();
+           // checkNetwork.TestAddress();
             checkNetwork.Check(10, 50);
         }
         static void TestNetBios()
@@ -125,14 +125,21 @@ namespace TestDnsFail
                 Console.WriteLine(resp);
         }
 
+        static void CheckArp()
+        {
+            var mac = TestArp.getRemoteMAC("192.168.0.46", "192.168.0.20");
+            Console.WriteLine(TestArp.formatMac(mac));
+        }
+
 
         static void Main(string[] args)
         {
             try
             {
-                TestZeroConf();
+                //CheckArp();
+                //TestZeroConf();
                 //TestNetBios();
-                //TestNetWork();
+                TestNetWork();
                 //TestMessage();
                 //TestDnsError();
                 //TestPing();

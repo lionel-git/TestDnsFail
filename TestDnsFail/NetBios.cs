@@ -141,8 +141,8 @@ namespace TestDnsFail
             //local fields
             ArrayList networkComputers = new ArrayList();
             const int MAX_PREFERRED_LENGTH = -1;
-            int SV_TYPE_WORKSTATION = 1;
-            int SV_TYPE_SERVER = 2;
+        //    int SV_TYPE_WORKSTATION = 1;
+         //   int SV_TYPE_SERVER = 2;
             int SV_TYPE_ALL = -1;
             IntPtr buffer = IntPtr.Zero;
             IntPtr tmpBuffer = IntPtr.Zero;
