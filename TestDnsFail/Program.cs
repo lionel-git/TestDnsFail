@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Zeroconf;
 
 namespace TestDnsFail
 {
@@ -87,11 +88,52 @@ namespace TestDnsFail
 
         }
 
+        static void TestNetWork()
+        {
+            var checkNetwork = new CheckNetWork();
+            checkNetwork.TestAddress();
+            checkNetwork.Check(10, 50);
+        }
+        static void TestNetBios()
+        {
+            var netBios = new NetworkBrowser();
+            var names = netBios.getNetworkComputers();
+            foreach (var name in names)
+            {
+                Console.WriteLine(name);
+            }        
+        }
+
+        static void TestZeroConf()
+        {
+            var t=EnumerateAllServicesFromAllHosts();
+            t.Wait();
+        }
+
+
+        public async Task ProbeForNetworkPrinters()
+        {
+            IReadOnlyList<IZeroconfHost> results = await
+                ZeroconfResolver.ResolveAsync("_printer._tcp.local.");
+        }
+
+        public static async Task EnumerateAllServicesFromAllHosts()
+        {
+            ILookup<string, string> domains = await ZeroconfResolver.BrowseDomainsAsync();
+            var responses = await ZeroconfResolver.ResolveAsync(domains.Select(g => g.Key));
+            foreach (var resp in responses)
+                Console.WriteLine(resp);
+        }
+
+
         static void Main(string[] args)
         {
             try
             {
-                TestMessage();
+                TestZeroConf();
+                //TestNetBios();
+                //TestNetWork();
+                //TestMessage();
                 //TestDnsError();
                 //TestPing();
             }
